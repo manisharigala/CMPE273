@@ -86,8 +86,9 @@ def run_schedule(when):
             return
 
         m = ("0"*(2-len(when[0])) + when[0])*(when[0].isnumeric()) + "00"*(first)
-        h =  ("0"*(2-len(when[1])) + when[1])*(when[1].isnumeric()) + "00"*(second)
-        exec(f"schedule.every().{days[when[2]]}.at({h}:{m}).do(job)")
+        h = ("0"*(2-len(when[1])) + when[1])*(when[1].isnumeric()) + "00"*(second)
+        cmd = f"schedule.every().{days[when[2]]}.at('{h}:{m}').do(job)"
+        exec(cmd)
 
     return 
 
