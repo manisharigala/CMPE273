@@ -59,6 +59,7 @@ def delete_servers():
     for sp in SERVER_PROCESS_IDS.keys():
         if sp not in con_servers:
             process_id = SERVER_PROCESS_IDS[sp]
+            print(f"Removing server {sp}")
             process_id.terminate()
             SERVER_PROCESS_IDS.pop(sp)
 

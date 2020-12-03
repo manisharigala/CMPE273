@@ -146,8 +146,59 @@ def add_node():
 
 
 
-def remove_node(servers, del_node):
-    pass
+def remove_node(del_node):
+    # Pick a node to be removed.
+    # Re-balance data to the other nodes.
+    # After removal is done, send remove signal to Consul.
+    global producers
+    context = zmq.Context()
+    consumer = context.socket(zmq.PULL)
+    consumer.bind(f"tcp://127.0.0.1:3000")
+
+    con_servers = list(c.agent.services().keys())
+    servers = ["tcp://"+server for server in con_servers]
+
+    del_node_angle = hash_func(to_int(del_node))
+
+    bins_angle_to_name = dict()
+    bin_angle_list = []
+    for s in servers:
+        bins_angle_to_name[hash_func(to_int(s))] = s 
+        bin_angle_list.append(hash_func(to_int(s)))
+    
+    json_string = {'op' : 'GET_ALL' }
+    producers[del_node].send_json(json_string)
+    recv_json = consumer.recv_json()
+    recv_json = recv_json['Collection']
+
+    # pos = bisect(bin_angle_list,del_node_angle)
+    # pos -= 1
+    del bins_angle_to_name[del_node_angle]
+    bin_angle_list.remove(del_node_angle)
+
+    print("Rehashing")
+    print(bin_angle_list)
+    for data in recv_json:
+        hashed_data = hash_func(to_int(data['key']))
+        print("Key Hash value:", hashed_data)
+    
+        angle = -1
+        for i in bin_angle_list:
+            if  i >= hashed_data:
+                angle = i
+                break
+        data['op'] = 'PUT'
+        if angle == -1:
+            bin_to_be_hashed_to = bins_angle_to_name[bin_angle_list[0]]
+            print("bin to be hashed to", bin_to_be_hashed_to)
+        else:
+            bin_to_be_hashed_to = bins_angle_to_name[angle]
+            print("bin to be hashed to", bin_to_be_hashed_to)
+        producers[bin_to_be_hashed_to].send_json(data)
+        time.sleep(1)
+    print("Done")
+    
+
 
 
 
@@ -242,7 +293,8 @@ if __name__ == "__main__":
 
     print("Adding New Node")
     add_node()
-
+    print("Remove Node ")
+    remove_node("tcp://127.0.0.1:2000")
     # con_servers = list(c.agent.services().keys())
     # servers = ["tcp://"+server for server in con_servers]
 
