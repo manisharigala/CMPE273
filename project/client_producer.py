@@ -262,7 +262,7 @@ def generate_data_hrw_hashing(servers):
     ## TODO
     producers = create_clients(servers)
     for num in range(10):
-        data = { 'op':'put','key': f'key-{num}', 'value': f'value-{num}' }
+        data = { 'op':'PUT','key': f'key-{num}', 'value': f'value-{num}' }
         print("Server List:", servers)
         print("Data to be hashed to", data['key'])
         bin_to_be_hashed_to = hrw_bin_to(servers, data['key'])
