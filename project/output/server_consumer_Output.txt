@@ -1,0 +1,30 @@
+Last login: Thu Dec  3 17:36:21 on ttys001
+manisharigala@Manishs-MacBook-Pro ~ % cd Desktop/CMPE\ 273/Assignments/Project
+manisharigala@Manishs-MacBook-Pro Project % pipenv run python3 server_consumer.py   
+Starting a server at:2000...
+Starting a server at:2001...
+Starting a server at:2002...
+Starting a server at:2003...
+Server_port=2001:key=key-0,value=value-0
+Server_port=2002:key=key-1,value=value-1
+Server_port=2003:key=key-2,value=value-2
+Server_port=2001:key=key-3,value=value-3
+Server_port=2002:key=key-4,value=value-4
+Server_port=2003:key=key-5,value=value-5
+Server_port=2000:key=key-6,value=value-6
+Server_port=2001:key=key-7,value=value-7
+Server_port=2002:key=key-8,value=value-8
+Server_port=2003:key=key-9,value=value-9
+Starting a server at:2004...
+Server_port=2004:key=key-0,value=value-0
+Server_port=2004:key=key-3,value=value-3
+Server_port=2001:key=key-7,value=value-7
+Server_port=2004:key=key-6,value=value-6
+Removing server 127.0.0.1:2000
+Server 127.0.0.1:2000 removed
+
+
+
+
+
+

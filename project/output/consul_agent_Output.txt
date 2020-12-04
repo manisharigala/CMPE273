@@ -1,0 +1,287 @@
+Last login: Thu Dec  3 17:36:54 on ttys002
+manisharigala@Manishs-MacBook-Pro ~ % cd Desktop/CMPE\ 273/Assignments/Project
+manisharigala@Manishs-MacBook-Pro Project % consul agent -dev                       
+==> Starting Consul agent...
+           Version: '1.9.0'
+           Node ID: '29f36297-1984-dc80-e2db-c91e036f71c1'
+         Node name: 'Manishs-MacBook-Pro.local'
+        Datacenter: 'dc1' (Segment: '<all>')
+            Server: true (Bootstrap: false)
+       Client Addr: [127.0.0.1] (HTTP: 8500, HTTPS: -1, gRPC: 8502, DNS: 8600)
+      Cluster Addr: 127.0.0.1 (LAN: 8301, WAN: 8302)
+           Encrypt: Gossip: false, TLS-Outgoing: false, TLS-Incoming: false, Auto-Encrypt-TLS: false
+
+==> Log data will now stream in as it occurs:
+
+    2020-12-03T17:37:59.559-0800 [WARN]  agent: Node name "Manishs-MacBook-Pro.local" will not be discoverable via DNS due to invalid characters. Valid characters include all alpha-numerics and dashes.
+    2020-12-03T17:37:59.572-0800 [WARN]  agent.auto_config: Node name "Manishs-MacBook-Pro.local" will not be discoverable via DNS due to invalid characters. Valid characters include all alpha-numerics and dashes.
+    2020-12-03T17:37:59.584-0800 [INFO]  agent.server.raft: initial configuration: index=1 servers="[{Suffrage:Voter ID:29f36297-1984-dc80-e2db-c91e036f71c1 Address:127.0.0.1:8300}]"
+    2020-12-03T17:37:59.585-0800 [INFO]  agent.server.raft: entering follower state: follower="Node at 127.0.0.1:8300 [Follower]" leader=
+    2020-12-03T17:37:59.589-0800 [INFO]  agent.server.serf.wan: serf: EventMemberJoin: Manishs-MacBook-Pro.local.dc1 127.0.0.1
+    2020-12-03T17:37:59.591-0800 [INFO]  agent.server.serf.lan: serf: EventMemberJoin: Manishs-MacBook-Pro.local 127.0.0.1
+    2020-12-03T17:37:59.591-0800 [INFO]  agent.router: Initializing LAN area manager
+    2020-12-03T17:37:59.592-0800 [INFO]  agent.server: Adding LAN server: server="Manishs-MacBook-Pro.local (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+    2020-12-03T17:37:59.592-0800 [INFO]  agent.server: Handled event for server in area: event=member-join server=Manishs-MacBook-Pro.local.dc1 area=wan
+    2020-12-03T17:37:59.596-0800 [INFO]  agent: Started DNS server: address=127.0.0.1:8600 network=tcp
+    2020-12-03T17:37:59.597-0800 [INFO]  agent: Started DNS server: address=127.0.0.1:8600 network=udp
+    2020-12-03T17:37:59.604-0800 [INFO]  agent: Starting server: address=127.0.0.1:8500 network=tcp protocol=http
+    2020-12-03T17:37:59.605-0800 [WARN]  agent: DEPRECATED Backwards compatibility with pre-1.9 metrics enabled. These metrics will be removed in a future version of Consul. Set `telemetry { disable_compat_1.9 = true }` to disable them.
+    2020-12-03T17:37:59.605-0800 [INFO]  agent: Started gRPC server: address=127.0.0.1:8502 network=tcp
+    2020-12-03T17:37:59.605-0800 [INFO]  agent: started state syncer
+==> Consul agent running!
+    2020-12-03T17:37:59.651-0800 [WARN]  agent.server.raft: heartbeat timeout reached, starting election: last-leader=
+    2020-12-03T17:37:59.651-0800 [INFO]  agent.server.raft: entering candidate state: node="Node at 127.0.0.1:8300 [Candidate]" term=2
+    2020-12-03T17:37:59.652-0800 [DEBUG] agent.server.raft: votes: needed=1
+    2020-12-03T17:37:59.652-0800 [DEBUG] agent.server.raft: vote granted: from=29f36297-1984-dc80-e2db-c91e036f71c1 term=2 tally=1
+    2020-12-03T17:37:59.652-0800 [INFO]  agent.server.raft: election won: tally=1
+    2020-12-03T17:37:59.652-0800 [INFO]  agent.server.raft: entering leader state: leader="Node at 127.0.0.1:8300 [Leader]"
+    2020-12-03T17:37:59.652-0800 [INFO]  agent.server: cluster leadership acquired
+    2020-12-03T17:37:59.653-0800 [INFO]  agent.server: New leader elected: payload=Manishs-MacBook-Pro.local
+    2020-12-03T17:37:59.654-0800 [DEBUG] agent.server: Cannot upgrade to new ACLs: leaderMode=0 mode=0 found=true leader=127.0.0.1:8300
+    2020-12-03T17:37:59.663-0800 [DEBUG] agent.server.autopilot: autopilot is now running
+    2020-12-03T17:37:59.663-0800 [DEBUG] agent.server.autopilot: state update routine is now running
+    2020-12-03T17:37:59.665-0800 [DEBUG] connect.ca.consul: consul CA provider configured: id=07:80:c8:de:f6:41:86:29:8f:9c:b8:17:d6:48:c2:d5:c5:5c:7f:0c:03:f7:cf:97:5a:a7:c1:68:aa:23:ae:81 is_primary=true
+    2020-12-03T17:37:59.683-0800 [INFO]  agent.server.connect: initialized primary datacenter CA with provider: provider=consul
+    2020-12-03T17:37:59.683-0800 [INFO]  agent.leader: started routine: routine="federation state anti-entropy"
+    2020-12-03T17:37:59.683-0800 [INFO]  agent.leader: started routine: routine="federation state pruning"
+    2020-12-03T17:37:59.683-0800 [INFO]  agent.leader: started routine: routine="intermediate cert renew watch"
+    2020-12-03T17:37:59.683-0800 [INFO]  agent.leader: started routine: routine="CA root pruning"
+    2020-12-03T17:37:59.684-0800 [DEBUG] agent.server: successfully established leadership: duration=30.667975ms
+    2020-12-03T17:37:59.684-0800 [INFO]  agent.server: member joined, marking health alive: member=Manishs-MacBook-Pro.local
+    2020-12-03T17:37:59.689-0800 [INFO]  agent.server: federation state anti-entropy synced
+    2020-12-03T17:37:59.970-0800 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+    2020-12-03T17:37:59.972-0800 [INFO]  agent: Synced node info
+    2020-12-03T17:38:00.807-0800 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+    2020-12-03T17:38:00.807-0800 [DEBUG] agent: Node info in sync
+    2020-12-03T17:38:00.807-0800 [DEBUG] agent: Node info in sync
+    2020-12-03T17:38:03.468-0800 [WARN]  agent: Service name will not be discoverable via DNS due to invalid characters. Valid characters include all alpha-numerics and dashes.: service=127.0.0.1:2000
+    2020-12-03T17:38:03.468-0800 [DEBUG] agent: Node info in sync
+    2020-12-03T17:38:03.469-0800 [INFO]  agent: Synced service: service=127.0.0.1:2000
+    2020-12-03T17:38:03.469-0800 [DEBUG] agent: Node info in sync
+    2020-12-03T17:38:03.469-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2000
+    2020-12-03T17:38:03.469-0800 [DEBUG] agent: Node info in sync
+    2020-12-03T17:38:03.469-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2000
+    2020-12-03T17:38:03.469-0800 [DEBUG] agent.http: Request finished: method=PUT url=/v1/agent/service/register from=127.0.0.1:51187 latency=2.99541ms
+    2020-12-03T17:38:03.471-0800 [WARN]  agent: Service name will not be discoverable via DNS due to invalid characters. Valid characters include all alpha-numerics and dashes.: service=127.0.0.1:2001
+    2020-12-03T17:38:03.471-0800 [DEBUG] agent: Node info in sync
+    2020-12-03T17:38:03.471-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2000
+    2020-12-03T17:38:03.472-0800 [INFO]  agent: Synced service: service=127.0.0.1:2001
+    2020-12-03T17:38:03.472-0800 [DEBUG] agent.http: Request finished: method=PUT url=/v1/agent/service/register from=127.0.0.1:51187 latency=307.063µs
+    2020-12-03T17:38:03.472-0800 [DEBUG] agent: Node info in sync
+    2020-12-03T17:38:03.472-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2001
+    2020-12-03T17:38:03.472-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2000
+    2020-12-03T17:38:03.472-0800 [DEBUG] agent: Node info in sync
+    2020-12-03T17:38:03.472-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2000
+    2020-12-03T17:38:03.472-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2001
+    2020-12-03T17:38:03.473-0800 [WARN]  agent: Service name will not be discoverable via DNS due to invalid characters. Valid characters include all alpha-numerics and dashes.: service=127.0.0.1:2002
+    2020-12-03T17:38:03.473-0800 [DEBUG] agent: Node info in sync
+    2020-12-03T17:38:03.473-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2000
+    2020-12-03T17:38:03.473-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2001
+    2020-12-03T17:38:03.474-0800 [INFO]  agent: Synced service: service=127.0.0.1:2002
+    2020-12-03T17:38:03.474-0800 [DEBUG] agent.http: Request finished: method=PUT url=/v1/agent/service/register from=127.0.0.1:51187 latency=321.153µs
+    2020-12-03T17:38:03.474-0800 [DEBUG] agent: Node info in sync
+    2020-12-03T17:38:03.474-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2000
+    2020-12-03T17:38:03.474-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2001
+    2020-12-03T17:38:03.474-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2002
+    2020-12-03T17:38:03.474-0800 [DEBUG] agent: Node info in sync
+    2020-12-03T17:38:03.474-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2000
+    2020-12-03T17:38:03.474-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2001
+    2020-12-03T17:38:03.474-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2002
+    2020-12-03T17:38:03.475-0800 [WARN]  agent: Service name will not be discoverable via DNS due to invalid characters. Valid characters include all alpha-numerics and dashes.: service=127.0.0.1:2003
+    2020-12-03T17:38:03.475-0800 [DEBUG] agent: Node info in sync
+    2020-12-03T17:38:03.475-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2000
+    2020-12-03T17:38:03.475-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2001
+    2020-12-03T17:38:03.475-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2002
+    2020-12-03T17:38:03.476-0800 [INFO]  agent: Synced service: service=127.0.0.1:2003
+    2020-12-03T17:38:03.476-0800 [DEBUG] agent: Node info in sync
+    2020-12-03T17:38:03.476-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2000
+    2020-12-03T17:38:03.476-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2001
+    2020-12-03T17:38:03.476-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2002
+    2020-12-03T17:38:03.476-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2003
+    2020-12-03T17:38:03.476-0800 [DEBUG] agent: Node info in sync
+    2020-12-03T17:38:03.476-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2000
+    2020-12-03T17:38:03.476-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2001
+    2020-12-03T17:38:03.476-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2002
+    2020-12-03T17:38:03.476-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2003
+    2020-12-03T17:38:03.476-0800 [DEBUG] agent.http: Request finished: method=PUT url=/v1/agent/service/register from=127.0.0.1:51187 latency=359.326µs
+    2020-12-03T17:38:03.479-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51187 latency=1.597743ms
+    2020-12-03T17:38:03.917-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=47.703µs
+    2020-12-03T17:38:03.919-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=45.275µs
+    2020-12-03T17:38:03.921-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=44.419µs
+    2020-12-03T17:38:03.943-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=70.856µs
+    2020-12-03T17:38:03.949-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=63.327µs
+    2020-12-03T17:38:03.956-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=81.559µs
+    2020-12-03T17:38:03.964-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=152.703µs
+    2020-12-03T17:38:04.976-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=113.596µs
+    2020-12-03T17:38:05.981-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=61.262µs
+    2020-12-03T17:38:06.987-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=103.449µs
+    2020-12-03T17:38:07.995-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=106.636µs
+    2020-12-03T17:38:09.004-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=108.238µs
+    2020-12-03T17:38:10.014-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=103.437µs
+    2020-12-03T17:38:11.020-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=105.487µs
+    2020-12-03T17:38:12.026-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=107.904µs
+    2020-12-03T17:38:13.034-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=53.696µs
+    2020-12-03T17:38:14.043-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=102.406µs
+    2020-12-03T17:38:15.049-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=108.483µs
+    2020-12-03T17:38:16.057-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=119.062µs
+    2020-12-03T17:38:16.225-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51187 latency=172.877µs
+    2020-12-03T17:38:16.301-0800 [WARN]  agent: Service name will not be discoverable via DNS due to invalid characters. Valid characters include all alpha-numerics and dashes.: service=127.0.0.1:2004
+    2020-12-03T17:38:16.301-0800 [DEBUG] agent: Node info in sync
+    2020-12-03T17:38:16.301-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2003
+    2020-12-03T17:38:16.302-0800 [INFO]  agent: Synced service: service=127.0.0.1:2004
+    2020-12-03T17:38:16.302-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2000
+    2020-12-03T17:38:16.302-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2001
+    2020-12-03T17:38:16.302-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2002
+    2020-12-03T17:38:16.302-0800 [DEBUG] agent.http: Request finished: method=PUT url=/v1/agent/service/register from=127.0.0.1:51187 latency=1.00562ms
+    2020-12-03T17:38:16.302-0800 [DEBUG] agent: Node info in sync
+    2020-12-03T17:38:16.302-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2000
+    2020-12-03T17:38:16.302-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2001
+    2020-12-03T17:38:16.302-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2002
+    2020-12-03T17:38:16.302-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2003
+    2020-12-03T17:38:16.302-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2004
+    2020-12-03T17:38:16.302-0800 [DEBUG] agent: Node info in sync
+    2020-12-03T17:38:16.302-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2000
+    2020-12-03T17:38:16.302-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2001
+    2020-12-03T17:38:16.302-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2002
+    2020-12-03T17:38:16.302-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2003
+    2020-12-03T17:38:16.302-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2004
+    2020-12-03T17:38:16.309-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51187 latency=3.369125ms
+    2020-12-03T17:38:17.064-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=1.454171ms
+    2020-12-03T17:38:17.074-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=3.546239ms
+    2020-12-03T17:38:17.078-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=327.451µs
+    2020-12-03T17:38:18.087-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=309.401µs
+    2020-12-03T17:38:19.098-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=462.41µs
+    2020-12-03T17:38:20.105-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=365.035µs
+    2020-12-03T17:38:21.116-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=454.349µs
+    2020-12-03T17:38:22.127-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=315.755µs
+    2020-12-03T17:38:22.306-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51187 latency=240.713µs
+    2020-12-03T17:38:23.137-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=233.555µs
+    2020-12-03T17:38:23.334-0800 [DEBUG] agent: Node info in sync
+    2020-12-03T17:38:23.334-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2002
+    2020-12-03T17:38:23.334-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2003
+    2020-12-03T17:38:23.334-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2004
+    2020-12-03T17:38:23.334-0800 [DEBUG] agent: removed service: service=127.0.0.1:2000
+    2020-12-03T17:38:23.342-0800 [INFO]  agent: Deregistered service: service=127.0.0.1:2000
+    2020-12-03T17:38:23.342-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2001
+    2020-12-03T17:38:23.342-0800 [DEBUG] agent: Node info in sync
+    2020-12-03T17:38:23.342-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2001
+    2020-12-03T17:38:23.342-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2002
+    2020-12-03T17:38:23.342-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2003
+    2020-12-03T17:38:23.342-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2004
+    2020-12-03T17:38:23.342-0800 [DEBUG] agent.http: Request finished: method=PUT url=/v1/agent/service/deregister/127.0.0.1:2000 from=127.0.0.1:51187 latency=9.372407ms
+    2020-12-03T17:38:24.147-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=159.869µs
+    2020-12-03T17:38:24.152-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=182.195µs
+    2020-12-03T17:38:25.157-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=98.938µs
+    2020-12-03T17:38:26.167-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=108.478µs
+    2020-12-03T17:38:27.175-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=124.578µs
+    2020-12-03T17:38:28.185-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=126.329µs
+    2020-12-03T17:38:29.195-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=133.115µs
+    2020-12-03T17:38:30.203-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=121.622µs
+    2020-12-03T17:38:31.208-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=115.55µs
+    2020-12-03T17:38:32.215-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=66.545µs
+    2020-12-03T17:38:33.223-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=110.406µs
+    2020-12-03T17:38:34.232-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=150.493µs
+    2020-12-03T17:38:35.242-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=120.339µs
+    2020-12-03T17:38:36.247-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=133.042µs
+    2020-12-03T17:38:37.254-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=161.041µs
+    2020-12-03T17:38:38.260-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=110.414µs
+    2020-12-03T17:38:39.265-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=116.388µs
+    2020-12-03T17:38:40.271-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=179.602µs
+    2020-12-03T17:38:41.277-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=87.647µs
+    2020-12-03T17:38:42.281-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=54.264µs
+    2020-12-03T17:38:43.292-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=148.302µs
+    2020-12-03T17:38:44.298-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=126.428µs
+    2020-12-03T17:38:45.305-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=122.18µs
+    2020-12-03T17:38:46.310-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=112.855µs
+    2020-12-03T17:38:47.318-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=207.276µs
+    2020-12-03T17:38:48.327-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=119.435µs
+    2020-12-03T17:38:49.337-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=112.214µs
+    2020-12-03T17:38:50.345-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=122.775µs
+    2020-12-03T17:38:51.348-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=55.329µs
+    2020-12-03T17:38:52.355-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=123.982µs
+    2020-12-03T17:38:53.358-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=73.012µs
+    2020-12-03T17:38:54.367-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=110.141µs
+    2020-12-03T17:38:55.376-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=121.111µs
+    2020-12-03T17:38:56.386-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=145.678µs
+    2020-12-03T17:38:57.394-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=108.495µs
+    2020-12-03T17:38:58.403-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=151.349µs
+    2020-12-03T17:38:59.410-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=116.949µs
+    2020-12-03T17:39:00.416-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=110.351µs
+    2020-12-03T17:39:01.422-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=90.441µs
+    2020-12-03T17:39:02.432-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=143.115µs
+    2020-12-03T17:39:03.442-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=126.737µs
+    2020-12-03T17:39:04.450-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=132.264µs
+    2020-12-03T17:39:05.457-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=120.921µs
+    2020-12-03T17:39:06.466-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=102.964µs
+    2020-12-03T17:39:07.473-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=117.952µs
+    2020-12-03T17:39:08.479-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=127.368µs
+    2020-12-03T17:39:09.484-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=104.15µs
+    2020-12-03T17:39:10.491-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=157.229µs
+    2020-12-03T17:39:11.498-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=150.948µs
+    2020-12-03T17:39:12.506-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=143.856µs
+    2020-12-03T17:39:13.516-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=89.8µs
+    2020-12-03T17:39:14.522-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=148.419µs
+    2020-12-03T17:39:15.533-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=121.595µs
+    2020-12-03T17:39:16.544-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=133.026µs
+    2020-12-03T17:39:17.552-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=140.686µs
+    2020-12-03T17:39:18.558-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=170.716µs
+    2020-12-03T17:39:19.564-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=143.329µs
+    2020-12-03T17:39:20.570-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=144.672µs
+    2020-12-03T17:39:21.580-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=119.217µs
+    2020-12-03T17:39:22.591-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=142.109µs
+    2020-12-03T17:39:23.597-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=91.492µs
+    2020-12-03T17:39:24.607-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=106.508µs
+    2020-12-03T17:39:25.617-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=143.601µs
+    2020-12-03T17:39:26.625-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=165.668µs
+    2020-12-03T17:39:27.633-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=96.893µs
+    2020-12-03T17:39:28.639-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=124.092µs
+    2020-12-03T17:39:29.646-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=83.421µs
+    2020-12-03T17:39:30.656-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=133.181µs
+    2020-12-03T17:39:31.662-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=122.961µs
+    2020-12-03T17:39:32.671-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=160.237µs
+    2020-12-03T17:39:33.679-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=87.578µs
+    2020-12-03T17:39:34.689-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=194.387µs
+    2020-12-03T17:39:35.700-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=158.084µs
+    2020-12-03T17:39:36.708-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=161.133µs
+    2020-12-03T17:39:37.715-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=149.805µs
+    2020-12-03T17:39:38.722-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=106.157µs
+    2020-12-03T17:39:39.292-0800 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+    2020-12-03T17:39:39.292-0800 [DEBUG] agent: Node info in sync
+    2020-12-03T17:39:39.292-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2004
+    2020-12-03T17:39:39.292-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2001
+    2020-12-03T17:39:39.292-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2002
+    2020-12-03T17:39:39.292-0800 [DEBUG] agent: Service in sync: service=127.0.0.1:2003
+    2020-12-03T17:39:39.730-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=135.541µs
+    2020-12-03T17:39:40.737-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=126.894µs
+    2020-12-03T17:39:41.747-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=109.584µs
+    2020-12-03T17:39:42.757-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=105.193µs
+    2020-12-03T17:39:43.766-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=119.718µs
+    2020-12-03T17:39:44.774-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=2.806875ms
+    2020-12-03T17:39:45.781-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=164.875µs
+    2020-12-03T17:39:46.789-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=178.523µs
+    2020-12-03T17:39:47.796-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=112.887µs
+    2020-12-03T17:39:48.806-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=149.821µs
+    2020-12-03T17:39:49.813-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=164.359µs
+    2020-12-03T17:39:50.821-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=112.938µs
+    2020-12-03T17:39:51.830-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=140.372µs
+    2020-12-03T17:39:52.836-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=208.513µs
+    2020-12-03T17:39:53.847-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=133.688µs
+    2020-12-03T17:39:54.853-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=169.918µs
+    2020-12-03T17:39:55.864-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=120.352µs
+    2020-12-03T17:39:56.874-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=199.909µs
+    2020-12-03T17:39:57.883-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=113.335µs
+    2020-12-03T17:39:58.892-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=140.415µs
+    2020-12-03T17:39:59.592-0800 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="Manishs-MacBook-Pro.local (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+    2020-12-03T17:39:59.593-0800 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="Manishs-MacBook-Pro.local.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+    2020-12-03T17:39:59.898-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=136.814µs
+    2020-12-03T17:40:00.904-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=105.999µs
+    2020-12-03T17:40:01.911-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=118.047µs
+    2020-12-03T17:40:02.919-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=156.85µs
+    2020-12-03T17:40:03.930-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=195.789µs
+    2020-12-03T17:40:04.936-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=115.948µs
+    2020-12-03T17:40:05.943-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=81.968µs
+    2020-12-03T17:40:06.949-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=137.853µs
+    2020-12-03T17:40:07.956-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=111.623µs
+    2020-12-03T17:40:08.963-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=130.737µs
+    2020-12-03T17:40:09.969-0800 [DEBUG] agent.http: Request finished: method=GET url=/v1/agent/services from=127.0.0.1:51192 latency=148.493µs
+

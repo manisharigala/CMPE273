@@ -1,0 +1,49 @@
+Last login: Thu Dec  3 12:17:48 on ttys002
+manisharigala@Manishs-MacBook-Pro ~ % cd Desktop/CMPE\ 273/Assignments/Project
+manisharigala@Manishs-MacBook-Pro Project % pipenv run python3 client_producer.py   
+Starting...Consistent Hashing
+Creating a server connection to tcp://127.0.0.1:2000...
+Creating a server connection to tcp://127.0.0.1:2001...
+Creating a server connection to tcp://127.0.0.1:2002...
+Creating a server connection to tcp://127.0.0.1:2003...
+Server Hash values [3, 108, 213, 318]
+Key, Hash value: key-0 63
+Server to be hashed to tcp://127.0.0.1:2001
+Key, Hash value: key-1 168
+Server to be hashed to tcp://127.0.0.1:2002
+Key, Hash value: key-2 273
+Server to be hashed to tcp://127.0.0.1:2003
+Key, Hash value: key-3 18
+Server to be hashed to tcp://127.0.0.1:2001
+Key, Hash value: key-4 123
+Server to be hashed to tcp://127.0.0.1:2002
+Key, Hash value: key-5 228
+Server to be hashed to tcp://127.0.0.1:2003
+Key, Hash value: key-6 333
+Server to be hashed to tcp://127.0.0.1:2000
+Key, Hash value: key-7 78
+Server to be hashed to tcp://127.0.0.1:2001
+Key, Hash value: key-8 183
+Server to be hashed to tcp://127.0.0.1:2002
+Key, Hash value: key-9 288
+Server to be hashed to tcp://127.0.0.1:2003
+Done
+Adding New Node
+tcp://127.0.0.1:2004
+Creating a server connection to tcp://127.0.0.1:2004...
+Rebalancing the data ...
+Server Hash values:  [3, 63, 108, 213, 318]
+Key, Hash value: key-0 63
+Server to be hashed to tcp://127.0.0.1:2004
+Key, Hash value: key-3 18
+Server to be hashed to tcp://127.0.0.1:2004
+Key, Hash value: key-7 78
+Server to be hashed to tcp://127.0.0.1:2001
+Done
+Removing Node: tcp://127.0.0.1:2000
+Rebalancing the data ...
+Server Hash values:  [63, 108, 213, 318]
+Key, Hash value: key-6 333
+Server to be hashed to tcp://127.0.0.1:2004
+Done
+manisharigala@Manishs-MacBook-Pro Project % 
