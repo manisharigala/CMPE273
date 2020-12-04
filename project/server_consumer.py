@@ -18,16 +18,16 @@ def server(port):
     
     while True:
         raw = consumer.recv_json()
-        print(raw)
+        # print(raw)
         if raw['op'] == 'GET_ALL':
-            print(raw)
+            # print(raw)
             json_list = []
             for key in data.keys():
                 json_val = {'key' : key, 'value' : data[key]}
                 json_list.append(json_val)
             json_string = {'Collection' : json_list}
             producer.send_json(json_string)
-            print('sent')
+            # print('sent')
             data = {}
         
         elif raw['op'] == 'PUT':
@@ -51,35 +51,37 @@ def create_servers():
             process_id = Process(target=server, args=(str(server_port),))
             SERVER_PROCESS_IDS["127.0.0.1:"+str(server_port)] = process_id
             process_id.start()
-            time.sleep(1)
+            # time.sleep(1)
     # print("create stop")
 
 def delete_servers():
     con_servers = list(c.agent.services().keys())
+    temp = ""
     for sp in SERVER_PROCESS_IDS.keys():
         if sp not in con_servers:
+            temp = sp
             process_id = SERVER_PROCESS_IDS[sp]
             print(f"Removing server {sp}")
             process_id.terminate()
-            SERVER_PROCESS_IDS.pop(sp)
+            break
+    del SERVER_PROCESS_IDS[temp]
+    print(f"Server {temp} removed")
 
         
 if __name__ == "__main__":
     
     curr_num_servers = len(c.agent.services())
     create_servers()
-    # print('end main')
+ 
     while True:
-
+        
         con_num_servers = len(c.agent.services())
         if curr_num_servers < con_num_servers:
-            # Create Server
-            # servers_to_spawn = con_num_servers - curr_num_servers
-            # print("creating servers")
             create_servers()
             curr_num_servers = con_num_servers
 
         elif curr_num_servers > con_num_servers:
+            
             delete_servers()
             curr_num_servers = con_num_servers
             

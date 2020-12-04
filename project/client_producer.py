@@ -117,11 +117,11 @@ def add_node():
     
     bin_angle_list.sort()
     #producers = create_clients(servers)
-    print("Rehashing")
-    print(bin_angle_list)
+    print("Rebalancing the data ...")
+    print("Server Hash values: ", bin_angle_list)
     for data in recv_json:
         hashed_data = hash_func(to_int(data['key']))
-        print("Key Hash value:", hashed_data)
+        print("Key, Hash value:", data['key'], hashed_data)
         # get the consistent hashing node 
         # send it to the node
         angle = -1
@@ -132,10 +132,10 @@ def add_node():
         data['op'] = 'PUT'
         if angle == -1:
             bin_to_be_hashed_to = bins_angle_to_name[bin_angle_list[0]]
-            print("bin to be hashed to", bin_to_be_hashed_to)
+            print("Server to be hashed to", bin_to_be_hashed_to)
         else:
             bin_to_be_hashed_to = bins_angle_to_name[angle]
-            print("bin to be hashed to", bin_to_be_hashed_to)
+            print("Server to be hashed to", bin_to_be_hashed_to)
         producers[bin_to_be_hashed_to].send_json(data)
         time.sleep(1)
     print("Done")
@@ -176,11 +176,12 @@ def remove_node(del_node):
     del bins_angle_to_name[del_node_angle]
     bin_angle_list.remove(del_node_angle)
 
-    print("Rehashing")
-    print(bin_angle_list)
+    print("Rebalancing the data ...")
+    bin_angle_list.sort()
+    print("Server Hash values: ", bin_angle_list)
     for data in recv_json:
         hashed_data = hash_func(to_int(data['key']))
-        print("Key Hash value:", hashed_data)
+        print("Key, Hash value:", data['key'], hashed_data)
     
         angle = -1
         for i in bin_angle_list:
@@ -190,16 +191,18 @@ def remove_node(del_node):
         data['op'] = 'PUT'
         if angle == -1:
             bin_to_be_hashed_to = bins_angle_to_name[bin_angle_list[0]]
-            print("bin to be hashed to", bin_to_be_hashed_to)
+            print("Server to be hashed to", bin_to_be_hashed_to)
         else:
             bin_to_be_hashed_to = bins_angle_to_name[angle]
-            print("bin to be hashed to", bin_to_be_hashed_to)
+            print("Server to be hashed to", bin_to_be_hashed_to)
         producers[bin_to_be_hashed_to].send_json(data)
         time.sleep(1)
+    del_node = del_node[6:]
+    c.agent.service.deregister(del_node)
+    # print(c.agent.services())
+    time.sleep(1)
     print("Done")
     
-
-
 
 
 def generate_data_consistent_hashing(servers):
@@ -213,11 +216,11 @@ def generate_data_consistent_hashing(servers):
         bins_angle_to_name[hash_func(to_int(s))] = s 
         bin_angle_list.append(hash_func(to_int(s)))
     
-    print(bin_angle_list)
+    print("Server Hash values", bin_angle_list)
     for num in range(10):
         data = { 'op':'PUT','key': f'key-{num}', 'value': f'value-{num}' }
         hashed_data = hash_func(to_int(data['key'])) 
-        print("Key Hash value:", hashed_data)
+        print("Key, Hash value:", data['key'], hashed_data)
         bin_angle_list.sort()
         angle = -1
         for i in bin_angle_list:
@@ -227,10 +230,10 @@ def generate_data_consistent_hashing(servers):
     
         if angle == -1:
             bin_to_be_hashed_to = bins_angle_to_name[bin_angle_list[0]]
-            print("bin to be hashed to", bin_to_be_hashed_to)
+            print("Server to be hashed to", bin_to_be_hashed_to)
         else:
             bin_to_be_hashed_to = bins_angle_to_name[angle]
-            print("bin to be hashed to", bin_to_be_hashed_to)
+            print("Server to be hashed to", bin_to_be_hashed_to)
         producers[bin_to_be_hashed_to].send_json(data)
         time.sleep(1)
     print("Done")
@@ -290,11 +293,14 @@ if __name__ == "__main__":
     # generate_data_round_robin(servers)
     generate_data_consistent_hashing(servers)
     # generate_data_hrw_hashing(servers)
-
+    time.sleep(2)
     print("Adding New Node")
     add_node()
-    print("Remove Node ")
-    remove_node("tcp://127.0.0.1:2000")
+    time.sleep(2)
+    print("Removing node Node ")
+    rm_node = "tcp://127.0.0.1:2000"
+    remove_node(rm_node)
+
     # con_servers = list(c.agent.services().keys())
     # servers = ["tcp://"+server for server in con_servers]
 
