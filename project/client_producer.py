@@ -297,8 +297,8 @@ if __name__ == "__main__":
     print("Adding New Node")
     add_node()
     time.sleep(2)
-    print("Removing node Node ")
     rm_node = "tcp://127.0.0.1:2000"
+    print(f"Removing Node: {rm_node}")
     remove_node(rm_node)
 
     # con_servers = list(c.agent.services().keys())
